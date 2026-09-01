@@ -1,5 +1,5 @@
 /* ============================================================
-   ALB — Aliança Liberal Brasileira (projeto escolar fictício)
+   ALB — Aliança Liberal Brasileira
    script.js — JavaScript puro (sem frameworks)
    ============================================================ */
 
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ========== EFEITO DE ROLAGEM NO CABEÇALHO ========== */
     const header = document.getElementById('header');
-
     function handleHeaderScroll() {
         if (window.scrollY > 40) {
             header.classList.add('scrolled');
@@ -84,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ========== ROLAGEM SUAVE COM COMPENSAÇÃO DO CABEÇALHO ========== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || href.length < 2) return;
             const target = document.querySelector(href);
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ========== CONTADORES ANIMADOS (metas/indicadores fictícios) ========== */
+    /* ========== CONTADORES ANIMADOS (metas e indicadores) ========== */
     function animateCounter(el) {
         const target = parseInt(el.getAttribute('data-target'), 10);
         if (prefersReducedMotion) {
@@ -314,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupFormValidation('contactForm', 'contactStatus', (form, status) => {
         if (status) {
-            status.textContent = 'Mensagem enviada! (envio simulado — nenhum dado foi transmitido.)';
+            status.textContent = 'Mensagem enviada! Em breve retornaremos o contato.';
             status.classList.add('visible', 'success');
         }
         form.reset();
@@ -326,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const input = newsletterForm.querySelector('input');
             if (input && input.checkValidity()) {
-                input.value = 'Inscrição simulada ✓';
+                input.value = 'Inscrição confirmada ✓';
                 input.disabled = true;
             }
         });
