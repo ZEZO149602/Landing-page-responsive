@@ -44,17 +44,18 @@
 
             <nav class="navbar" aria-label="Navegação principal">
                 <ul class="nav-list">
-                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#sobre" class="nav-link">Quem Somos</a></li>
                     <li><a href="#propostas" class="nav-link">Propostas</a></li>
                     <li><a href="#projetos" class="nav-link">Projetos</a></li>
                     <li><a href="#noticias" class="nav-link">Notícias</a></li>
                     <li><a href="#transparencia" class="nav-link">Transparência</a></li>
-                    <li><a href="#filie-se" class="nav-link">Participe</a></li>
+                    <li><a href="#filie-se" class="nav-link">Participação</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
 
             <div class="header-cta">
-                <a href="#filie-se" class="btn btn-primary btn-sm">Filie-se</a>
+                <a href="#filie-se" class="btn btn-primary btn-sm">Participação</a>
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
@@ -66,13 +67,14 @@
     <div class="menu-backdrop" id="menuBackdrop"></div>
     <nav class="mobile-menu" id="mobileMenu" aria-label="Navegação mobile">
         <ul>
-            <li><a href="#sobre" class="mobile-link">Sobre</a></li>
+            <li><a href="#sobre" class="mobile-link">Quem Somos</a></li>
             <li><a href="#propostas" class="mobile-link">Propostas</a></li>
             <li><a href="#projetos" class="mobile-link">Projetos</a></li>
             <li><a href="#noticias" class="mobile-link">Notícias</a></li>
             <li><a href="#transparencia" class="mobile-link">Transparência</a></li>
-            <li><a href="#filie-se" class="mobile-link">Participe</a></li>
-            <li><a href="#filie-se" class="mobile-link btn-mobile">Filie-se</a></li>
+            <li><a href="#filie-se" class="mobile-link">Participação</a></li>
+            <li><a href="#contato" class="mobile-link">Contato</a></li>
+            <li><a href="#propostas" class="mobile-link btn-mobile">Conheça nossas propostas</a></li>
         </ul>
     </nav>
 
@@ -95,8 +97,8 @@
                         <a href="#propostas" class="btn btn-primary btn-lg">
                             <i class="fas fa-file-lines" aria-hidden="true"></i> Conheça nossas propostas
                         </a>
-                        <a href="#filie-se" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-user-plus" aria-hidden="true"></i> Faça parte
+                        <a href="#sobre" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-compass" aria-hidden="true"></i> Nossa visão
                         </a>
                     </div>
                     <div class="hero-stats animate-on-scroll">
@@ -750,13 +752,13 @@
             </div>
         </section>
 
-        <!-- ========== FILIE-SE ========== -->
+        <!-- ========== PARTICIPAÇÃO ========== -->
         <section class="join" id="filie-se">
             <div class="container">
                 <div class="join-content">
-                    <div class="section-eyebrow">Faça parte</div>
-                    <h2>Junte-se à Aliança Liberal</h2>
-                    <p>Preencha o formulário abaixo para dar o primeiro passo. Seus dados não são compartilhados com terceiros.</p>
+                    <div class="section-eyebrow">Participação institucional</div>
+                    <h2>Formas de contribuir com a ALB</h2>
+                    <p>Da militância à candidatura, existem caminhos concretos para participar da construção das propostas da ALB. Preencha o formulário abaixo para dar o primeiro passo.</p>
 
                     <form class="join-form" id="joinForm" novalidate>
                         <div class="form-row">
@@ -797,8 +799,8 @@
                             <input type="checkbox" id="termos" required>
                             <label for="termos">Concordo com os <a href="#">termos de uso</a> e a <a href="#">política de privacidade</a> da ALB</label>
                         </div>
-                        <button type="submit" class="btn btn-white btn-lg">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar filiação
+                        <button type="submit" class="btn btn-white btn-lg" id="joinSubmit">
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i> <span class="btn-label">Enviar filiação</span>
                     </button>
                         <p class="form-status" id="joinStatus" role="alert"></p>
                     </form>
@@ -873,7 +875,7 @@
                                 <textarea id="c-mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
                                 <span class="field-error">Escreva sua mensagem.</span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar mensagem <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-primary" id="contactSubmit"><span class="btn-label">Enviar mensagem</span> <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
                             <p class="form-status" id="contactStatus" role="alert"></p>
                         </form>
                     </div>
@@ -911,7 +913,7 @@
                             <li><a href="#propostas">Propostas</a></li>
                             <li><a href="#projetos">Projetos</a></li>
                             <li><a href="#noticias">Notícias</a></li>
-                            <li><a href="#filie-se">Participe</a></li>
+                            <li><a href="#filie-se">Participação</a></li>
                         </ul>
                     </div>
 
@@ -956,9 +958,16 @@
         <i class="fas fa-chevron-up" aria-hidden="true"></i>
     </button>
 
-    <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Aviso de cookies">
-        <p>Usamos cookies para melhorar sua experiência de navegação. Ao continuar, você concorda com nossa <a href="#">política de privacidade</a>.</p>
-        <button class="btn btn-primary btn-sm" id="acceptCookies">Aceitar</button>
+    <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Preferências de cookies">
+        <div class="cookie-text">
+            <i class="fas fa-cookie-bite" aria-hidden="true"></i>
+            <p>Utilizamos cookies para melhorar sua experiência de navegação e entender como o site é utilizado. Você pode aceitar, recusar ou ajustar essa escolha a qualquer momento.</p>
+        </div>
+        <div class="cookie-actions">
+            <button class="btn btn-outline-sm" id="rejectCookies">Recusar</button>
+            <button class="btn btn-primary btn-sm" id="acceptCookies">Aceitar</button>
+            <button class="cookie-close" id="closeCookies" aria-label="Fechar aviso de cookies"><i class="fas fa-times" aria-hidden="true"></i></button>
+        </div>
     </div>
 
     <script src="index.js"></script>
