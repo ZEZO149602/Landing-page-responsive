@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ========== EFEITO DE ROLAGEM NO CABEÇALHO ========== */
     const header = document.getElementById('header');
+
     function handleHeaderScroll() {
         if (window.scrollY > 40) {
             header.classList.add('scrolled');
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ========== ROLAGEM SUAVE COM COMPENSAÇÃO DO CABEÇALHO ========== */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href === '#' || href.length < 2) return;
             const target = document.querySelector(href);
@@ -301,7 +302,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (status) {
                 status.classList.remove('visible');
             }
-            onValidSubmit(form, status);
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.classList.add('is-loading');
+                submitBtn.disabled = true;
+            }
+
+            // Pequeno atraso simulando o processamento do envio, para dar feedback visual real ao usuário
+            window.setTimeout(() => {
+                if (submitBtn) {
+                    submitBtn.classList.remove('is-loading');
+                    submitBtn.disabled = false;
+                }
+                onValidSubmit(form, status);
+            }, 900);
         });
     }
 
@@ -331,19 +346,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ========== BANNER DE COOKIES ========== */
+    /* ========== PREFERÊNCIAS DE COOKIES ========== */
     const cookieBanner = document.getElementById('cookieBanner');
     const acceptCookies = document.getElementById('acceptCookies');
+    const rejectCookies = document.getElementById('rejectCookies');
+    const closeCookies = document.getElementById('closeCookies');
+    const COOKIE_KEY = 'albCookiePreference';
 
-    if (cookieBanner && !sessionStorage.getItem('albCookiesAccepted')) {
-        setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+    function dismissCookieBanner() {
+        cookieBanner.classList.remove('visible');
+    }
+
+    if (cookieBanner && !localStorage.getItem(COOKIE_KEY)) {
+        setTimeout(() => cookieBanner.classList.add('visible'), 1200);
     }
 
     if (acceptCookies) {
         acceptCookies.addEventListener('click', () => {
-            sessionStorage.setItem('albCookiesAccepted', 'true');
-            cookieBanner.classList.remove('visible');
+            localStorage.setItem(COOKIE_KEY, 'accepted');
+            dismissCookieBanner();
         });
+    }
+
+    if (rejectCookies) {
+        rejectCookies.addEventListener('click', () => {
+            localStorage.setItem(COOKIE_KEY, 'rejected');
+            dismissCookieBanner();
+        });
+    }
+
+    if (closeCookies) {
+        // Fechar sem escolher mantém o aviso disponível na próxima visita
+        closeCookies.addEventListener('click', dismissCookieBanner);
     }
 
 });
